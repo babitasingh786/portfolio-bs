@@ -405,3 +405,50 @@ p {
   margin-right: 1rem;
 
 }
+
+@media (max-width: 768px) {
+  .service-item {
+    flex-direction: column !important; /* Stack elements vertically */
+    align-items: center !important; /* Center align */
+    justify-content: center !important;
+    text-align: center !important;
+    margin-bottom: 10px !important; /* Reduce space */
+  }
+
+  .service-item.zigzag-left, 
+  .service-item.zigzag-right {
+    flex-direction: column !important; /* Override zigzag effect */
+    text-align: center !important;
+  }
+
+  .service-card {
+    width: 100% !important; /* Full width for small screens */
+    margin-top: 10px !important; /* Reduce spacing */
+    padding: 15px !important; /* Reduce padding */
+    margin: 10px;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.message {
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  font-weight: 400;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: rgba(42, 42, 42, 0.907); /* Light green background */
+  color: #28a745; /* Success green */
+  animation: fadeOut 3s linear forwards;
+}

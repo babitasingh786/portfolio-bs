@@ -11,14 +11,10 @@ import {
 } from "react-bootstrap";
 import {Link} from 'react-scroll';
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { TbBrandLinkedin } from "react-icons/tb";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/portfolio.scss";
 import { useEffect } from "react";
 import Hero_Image from "../assests/Babita Portfolio.png";
-import { RiMessage2Line } from "react-icons/ri";
-import { FaGithubSquare } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
 import { BsWordpress } from "react-icons/bs";
 import { FaShopify } from "react-icons/fa";
 import { PiFigmaLogoFill } from "react-icons/pi";
@@ -34,6 +30,12 @@ import svvclinic from "../assests/svvclinic.png";
 import Marquee from "react-fast-marquee";
 import Typical from "react-typical";
 import Typewriter from "react-typewriter-effect";
+import Contact from "./Contact";
+import Services from "./Services";
+import Skills from "./Skills";
+import PortfilioContent from "./PortfilioContent";
+import Header from "./Header";
+import Footer from "./Footer";
 
 
 const Portfolio = () => {
@@ -151,26 +153,8 @@ const Portfolio = () => {
   return (
     <div className="portfolio-container">
       {/* Navbar */}
-      <Navbar expand="lg" className="px-4 navbar">
-        <Navbar.Brand href="#" className="nav-link">
-          Babita Singh
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="#services">Services</Nav.Link>
-            <Nav.Link href="#skills" className="nav-link">
-              Technologies
-            </Nav.Link>
-            <Nav.Link href="#portfolio" className="nav-link">
-              Portfolio
-            </Nav.Link>
-            <Nav.Link href="#contact" className="nav-link">
-              Contact
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+
+      <Header />
 
       {/* Hero Section */}
       <section className="hero">
@@ -223,181 +207,24 @@ const Portfolio = () => {
       <hr />
 
       {/* Services Section */}
-      <section id="services" className="services py-5">
-        <Container>
-          <h2 className="section-title">
-            <span className="highlight"> My Services</span>
-          </h2>
-          <Row className="justify-content-center">
-            <Col md={10} className="text-center">
-              {services.map((service, index) => (
-                <Col
-                  // lg={6}
-                  lg={`index % 2=== 0? 3:6`}
-                  key={index}
-                  className={`mb-4 service-item ${
-                    index % 2 === 0 ? "zigzag-left" : "zigzag-right"
-                  }`}
-                >
-                  <Card className="service-card">
-                    <Card.Body className="flex-column">
-                      <Card.Title className="service-title">
-                        {service.image}
-                        {service.title}
-                      </Card.Title>
-                      <Card.Text>{service.description}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-            </Col>
-          </Row>
-        </Container>
-      </section>
+   
+      <Services  services={services} />
       <hr />
 
       {/* Skills Section */}
 
-      <section id="skills" className="skills py-5 text-center">
-        <Container>
-          <h2 className="section-title">
-            {" "}
-            <span className="highlight"> Skills </span>
-          </h2>
-          <h3 className="my-5">The skills ,tools and technologies I use</h3>
-          <Row>
-            {skills.map((skill, index) => (
-              <Col md={2} key={index} className="mb-4">
-                <div className="skill-card">
-                  {typeof skill.image === "string" ? (
-                    <img
-                      src={skill.image}
-                      alt={skill.name}
-                      className="skill-icon"
-                    />
-                  ) : (
-                    skill.image
-                  )}
-
-                  <h5>{skill.name}</h5>
-                </div>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+      <Skills skills={skills} />
       <hr />
       {/* Portfolio Section */}
-      <section id="portfolio" className="portfolio py-5">
-        <Container>
-          <h2 className="section-title">
-            {" "}
-            <span className="gradient-text">Portfolio </span>
-          </h2>
-          <Row>
-            {projects.map((project, index) => (
-              <Col md={4} key={index} className="mb-4">
-                <Card className="project-card">
-                  <Card.Img variant="top" src={project.image} />
-                  <Card.Body>
-                    <Card.Title>{project.title}</Card.Title>
-                    <Card.Text>{project.description}</Card.Text>
-                    <a href={project.link} target="_blank" rel="noreferrer">
-                    <Button variant="outline-light"> View Project</Button>
-                    </a>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+     
+      <PortfilioContent projects={projects}  />
       <hr />
 
       {/* Contact Section */}
-      <section id="contact" className="contact py-5">
-        <Container>
-          <h2 className="section-title">
-            Get In <span className="highlight">Touch</span>
-          </h2>
-          <Row className="my-5">
-            <Col md={6} className="p-4">
-              <div className="contact-left-section">
-                <h2 className="gradient-text text-uppercase text-break pe-lg-5">
-                  Do you have project to discuss?
-                </h2>
-                <h1 className="my-3">
-                  GET IN TOUCH <RiMessage2Line />
-                </h1>
-
-                <Row className="my-4">
-                  <Col md={6} className="pb-sm-4">
-                    <h4 className="mb-3">CONTACT</h4>
-                    <a
-                      href="mailto:babitasingh7860@gmail.com"
-                      style={{ "text-decoration": "none", color: "white" }}
-                    >
-                      babitasingh7860@gmail.com
-                    </a>
-                  </Col>
-                  <Col md={6} className=" ps-lg-5">
-                    <h4 className="mb-3">SOCIAL MEDIA</h4>
-                    <div className="social-media-icons">
-                      <a href="https://www.linkedin.com/in/babita-singh/">
-                        <TbBrandLinkedin className="social-icon" />
-                      </a>
-                      <a href="https://www.linkedin.com/in/babita-singh/">
-                        <FaGithubSquare className="social-icon" />
-                      </a>
-                      <a href="https://www.linkedin.com/in/babita-singh/">
-                        <SiLeetcode className="social-icon" />
-                      </a>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
-            </Col>
-            <Col md={6}>
-              <Form className="contact-form">
-                <h3 className="mb-4">Send Me A Message</h3>
-                <Form.Group className="mb-3">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Your Name"
-                    className="contact-input"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="Your Email"
-                    className="contact-input"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Message</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={4}
-                    placeholder="Your Message"
-                    className="contact-input"
-                  />
-                </Form.Group>
-                <Button variant="primary" type="submit" className="contact-btn">
-                  Send Message
-                </Button>
-              </Form>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+      <Contact />
 
       {/* Footer */}
-      <footer className="footer py-4 text-center">
-        <p>&copy; 2025 Babita Singh. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
